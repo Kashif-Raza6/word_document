@@ -41,8 +41,8 @@ def perform_qa(question):
     documents = loader.load()
     text_splitter = CharacterTextSplitter(chunk_size=1024, chunk_overlap=30)
     texts = text_splitter.split_documents(documents)
-    API = open("API_KEY.txt", "r").read()
-    os.environ["OPENAI_API_KEY"] = API
+    API = st.secrets{"API"}
+    #os.environ["OPENAI_API_KEY"] = API
     embeddings = OpenAIEmbeddings(openai_api_key=API)
     docsearch = Chroma.from_documents(texts, embeddings)
     qa = VectorDBQA.from_chain_type(llm=OpenAI(openai_api_key=API),
