@@ -67,7 +67,11 @@ if st.button("Ask"):
     else:
         st.write("Please enter a question")
 
-# Set page footer
+# <p> Example Queries </p>
+# <p>1. what is the primary religion practiced by the Yljiri?</p>
+# <p>2. Can you list the Big 6 companies that make up the Corpaco Collective with a brief description of each?</p>
+        
+        # Set page footer
 footer = """
 <style>
 a:link , a:visited{
@@ -91,9 +95,7 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p> Example Queries </p>
-<p>1. what is the primary religion practiced by the Yljiri?</p>
-<p>2. Can you list the Big 6 companies that make up the Corpaco Collective with a brief description of each?</p>
+
 
 <p>*********************************</p>
 <p>Made by ❤️: Kashif Raza</p>
