@@ -45,7 +45,7 @@ def perform_qa(question):
     #os.environ["OPENAI_API_KEY"] = API
     embeddings = OpenAIEmbeddings(openai_api_key=API)
     docsearch = Chroma.from_documents(texts, embeddings)
-    qa = VectorDBQA.from_chain_type(llm=OpenAI(openai_api_key=API, temp=0),
+    qa = VectorDBQA.from_chain_type(llm=OpenAI(openai_api_key=API),
                                      chain_type="map_reduce", vectorstore=docsearch)
     ans = qa.run(question)
     return ans
