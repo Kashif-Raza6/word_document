@@ -39,13 +39,13 @@ def perform_qa(question):
     
     loader = DirectoryLoader("data", glob="**/*.docx")
     documents = loader.load()
-    text_splitter = CharacterTextSplitter(chunk_size=1024, chunk_overlap=30)
+    text_splitter = CharacterTextSplitter(chunk_size=1024, chunk_overlap=0)
     texts = text_splitter.split_documents(documents)
     API = st.secrets["API"]
     #os.environ["OPENAI_API_KEY"] = API
     embeddings = OpenAIEmbeddings(openai_api_key=API)
     docsearch = Chroma.from_documents(texts, embeddings)
-    qa = VectorDBQA.from_chain_type(llm=OpenAI(openai_api_key=API),
+    qa = VectorDBQA.from_chain_type(llm=OpenAI(openai_api_key=API, temp=0),
                                      chain_type="map_reduce", vectorstore=docsearch)
     ans = qa.run(question)
     return ans
