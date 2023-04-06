@@ -1,0 +1,8 @@
+langchain
+chromadb
+openai
+unstructured
+pillow
+transformers
+torch
+bs4
